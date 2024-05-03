@@ -2,7 +2,7 @@ package;
 
 class BPMSound extends FlxSound
 {
-	public var bpm(default, set):Int = 0;
+	public var bpm(default, set):Float = 0;
 	public var beat(get, null):Float = 1;
 	public var stepBeat(get, null):Float = 1;
 
@@ -11,7 +11,7 @@ class BPMSound extends FlxSound
 
 	public var localTime:Float = 0;
 
-	public function set_bpm(value:Int):Int
+	public function set_bpm(value:Float):Float
 	{
 		bpm = value;
 		crochet = (60 / bpm) * 1000;
@@ -27,10 +27,10 @@ class BPMSound extends FlxSound
 			return 0;
 		if (!playing)
 			return 0;
-		var oldStep = stepBeat;
-		stepBeat = Math.floor(localTime / stepCrochet);
+		var oldStep = Math.floor(stepBeat);
+		stepBeat = localTime / stepCrochet;
 
-		if (oldStep != stepBeat)
+		if (oldStep != Math.floor(stepBeat))
 			stepHit(Math.floor(Math.abs(stepBeat)));
 		return stepBeat;
 	}
@@ -39,7 +39,7 @@ class BPMSound extends FlxSound
 	{
 		var oldBeat = beat;
 		beat = Math.floor(stepBeat / 4);
-		if (oldBeat != beat)
+		if (oldBeat != Math.floor(beat))
 			beatHit(Math.floor(Math.abs(beat)));
 		return beat;
 	}

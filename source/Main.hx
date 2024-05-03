@@ -65,6 +65,8 @@ class Main extends Sprite
 		});
 		FlxG.mouse.useSystemCursor = true;
 		titlebar.onResize(0, 0);
+
+		addChild(window.DebugMetrics.get());
 	}
 }
 

@@ -1,0 +1,3 @@
+# How work (WORK)
+Music mania sera un juego de ritmo en base minijuegos
+input default: D F [SPACE] J K
